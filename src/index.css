@@ -1,0 +1,33 @@
+@import 'tailwindcss';
+
+@variant dark (.dark &);
+
+/* FeelDX — subtle surface tokens */
+@theme {
+  --font-sans: 'DM Sans', ui-sans-serif, system-ui, sans-serif;
+  --font-display: 'Instrument Sans', ui-sans-serif, system-ui, sans-serif;
+}
+
+@layer base {
+  :root {
+    /* Fallback until Header measures real height (tall mobile header). */
+    --feeldx-sticky-summary-top: 15rem;
+  }
+
+  html {
+    @apply scroll-smooth antialiased;
+  }
+
+  body {
+    @apply min-h-screen bg-[#f4f6f9] text-slate-900 dark:bg-slate-950 dark:text-slate-100;
+    font-family: var(--font-sans);
+  }
+
+  .dark {
+    color-scheme: dark;
+  }
+
+  html:not(.dark) {
+    color-scheme: light;
+  }
+}
