@@ -16,9 +16,9 @@ function labelFor(room: RoomType, fieldId: SelectionFieldId) {
   return getRoomDefinition(room).fields.find((f) => f.id === fieldId)?.label ?? fieldId
 }
 
-/** `top` / `max-h` track measured header via `--feeldx-sticky-summary-top` (Header + ResizeObserver). */
+/** At `lg+`, `top` / `max-h` track measured header via `--feeldx-sticky-summary-top` (Header + ResizeObserver). Mobile is in-flow only so the panel does not float over the form. */
 const SUMMARY_ASIDE_CLASS =
-  'order-1 self-start lg:order-2 sticky top-[var(--feeldx-sticky-summary-top)] z-30 flex w-full shrink-0 max-h-[calc(100dvh_-_var(--feeldx-sticky-summary-top)_-_0.75rem)] flex-col gap-4 overflow-y-auto overscroll-y-contain rounded-2xl border border-slate-200 bg-white/95 p-4 shadow-md shadow-slate-200/40 backdrop-blur-md dark:border-slate-700 dark:bg-slate-900/95 dark:shadow-slate-950/40'
+  'order-1 self-start lg:order-2 flex w-full shrink-0 flex-col gap-4 rounded-2xl border border-slate-200 bg-white/95 p-4 shadow-md shadow-slate-200/40 backdrop-blur-md dark:border-slate-700 dark:bg-slate-900/95 dark:shadow-slate-950/40 lg:sticky lg:top-[var(--feeldx-sticky-summary-top)] lg:z-30 lg:max-h-[calc(100dvh_-_var(--feeldx-sticky-summary-top)_-_0.75rem)] lg:overflow-y-auto lg:overscroll-y-contain'
 
 export function SummaryPanel({ room, selections }: SummaryPanelProps) {
   const def = useMemo(() => getRoomDefinition(room), [room])
